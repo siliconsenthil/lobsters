@@ -1,0 +1,25 @@
+tmp/*
+log/*
+.git
+.gitignore
+
+Dockerfile
+docker-compose.y*
+Capfile
+circle.yml
+
+# Ignore all logfiles and tempfiles.
+!/log/.keep
+/.idea/
+/tmp
+.DS_Store
+/TAGS
+.generators
+*.iml
+*.env
+public/
+*.rdb
+
+node_modules/
+vendor/
+env.sample

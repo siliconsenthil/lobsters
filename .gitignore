@@ -16,6 +16,8 @@
 /log
 /tmp
 
+*.env
+
 vendor/bundle
 public/assets
 public/avatars

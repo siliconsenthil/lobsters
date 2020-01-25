@@ -1,0 +1,28 @@
+version: '2.1'
+services:
+  lobsters:
+    build: .
+    image: lobsters:latest
+    env_file:
+      - env.sample
+    ports:
+      - "4009:4009"
+    # depends_on:
+    #     database:
+    #       condition: service_healthy
+  database:
+    image: mariadb
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: lobsters_development
+    ports:
+        - "3306:3306"
+    healthcheck:
+        test: "/usr/bin/mysql --user=root --password=password --execute \"SHOW DATABASES;\""
+        timeout: 5s
+        retries: 20
+    volumes:
+      - 'lobsters_database:/var/lib/mysql'
+volumes:
+  lobsters_database:
+    driver: local

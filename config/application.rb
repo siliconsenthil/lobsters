@@ -111,6 +111,14 @@ class << Rails.application
   # whether absolute URLs should include https (does not require that
   # config.force_ssl be on)
   def ssl?
-    true
+    ENV['FORCE_SSL'].to_s.downcase == 'true'
+  end
+
+  def domain
+    ENV["LOBSTER_HOSTNAME"]
+  end
+
+  def name
+    ENV["LOBSTER_SITE_NAME"]
   end
 end

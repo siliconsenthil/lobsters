@@ -119,13 +119,13 @@ class User < ApplicationRecord
     "sysop", "webmaster", "enable", "new", "signup",].freeze
 
   # days old accounts are considered new for
-  NEW_USER_DAYS = 7
+  NEW_USER_DAYS = -1
 
   # minimum karma required to be able to offer title/tag suggestions
-  MIN_KARMA_TO_SUGGEST = 10
+  MIN_KARMA_TO_SUGGEST = -4
 
   # minimum karma required to be able to downvote comments
-  MIN_KARMA_TO_DOWNVOTE = 50
+  MIN_KARMA_TO_DOWNVOTE = -4
 
   # minimum karma required to be able to submit new stories
   MIN_KARMA_TO_SUBMIT_STORIES = -4
@@ -137,7 +137,7 @@ class User < ApplicationRecord
   HEAVY_SELF_PROMOTER_PROPORTION = 0.51
 
   # minimum number of submitted stories before checking self promotion
-  MIN_STORIES_CHECK_SELF_PROMOTION = 2
+  MIN_STORIES_CHECK_SELF_PROMOTION = 0
 
   def self.recalculate_all_karmas!
     User.all.find_each do |u|

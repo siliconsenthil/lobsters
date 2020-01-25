@@ -77,7 +77,11 @@ class User < ApplicationRecord
   validates :email,
             :format => { :with => /\A[^@ ]+@[^@ ]+\.[^@ ]+\Z/ },
             :uniqueness => { :case_sensitive => false }
-
+  validate do |record|
+    if errors[:email].empty?
+      record.errors.add(:email, " domain must be *.getsimpl.com") if record.email.present? && Mail::Address.new(record.email).domain.present? && Mail::Address.new(record.email).domain.match(/^([\w\-]*\.{1})*getsimpl\.com/).nil?
+    end
+  end
   validates :homepage,
             :format => { :with => /\Ahttps?:\/\/[^\/\s]+\.[^.\/\s]+(\/.*)?\Z/ },
             :allow_blank => true

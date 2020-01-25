@@ -10,6 +10,11 @@ class Invitation < ApplicationRecord
       errors.add(:email, "is not valid")
     end
   end
+  validate do |record|
+    if errors[:email].empty?
+      record.errors.add(:email, " domain must be *.getsimpl.com") if record.email.present? && Mail::Address.new(record.email).domain.present? && Mail::Address.new(record.email).domain.match(/^([\w\-]*\.{1})*getsimpl\.com/).nil?
+    end
+  end
 
   validates :code, :email, :memo, length: { maximum: 255 }
 

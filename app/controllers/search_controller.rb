@@ -1,4 +1,5 @@
 class SearchController < ApplicationController
+  before_action :require_logged_in_user
   def index
     @title = "Search"
     @cur_url = "/search"

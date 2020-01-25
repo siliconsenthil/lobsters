@@ -155,7 +155,7 @@ class Story < ApplicationRecord
       check_not_tracking_domain
       errors.add(:url, "is not valid") unless url.match(URL_RE)
     elsif self.description.to_s.strip == ""
-      errors.add(:description, "must contain text if no URL posted")
+      errors.add(:description, "must contain text")
     end
 
     if self.title.starts_with?("Ask") && self.tags_a.include?('ask')

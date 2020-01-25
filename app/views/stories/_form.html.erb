@@ -1,22 +1,6 @@
 <%= render :partial => "stories/form_errors", :locals => { :f => f, :story => f.object } %>
 
 <div class="box">
-  <% unless defined?(suggesting) %>
-    <div class="boxline">
-    <% if f.object.url_is_editable_by_user?(@user) %>
-      <%= f.label :url, "URL:", :class => "required" %>
-      <%= f.text_field :url, :autocomplete => "off" %>
-      <%= button_tag "Fetch Title", :id => "story_fetch_title",
-        :type => "button" %>
-    <% elsif !f.object.new_record? && !f.object.url.blank? %>
-      <%= f.label :url, "URL:", :class => "required" %>
-      <div class="d">
-      <a href="<%= f.object.url %>"><%= f.object.url %></a>
-      </div>
-    <% end %>
-    </div>
-  <% end %>
-
   <div class="boxline">
     <%= f.label :title, "Title:", :class => "required" %>
     <%= f.text_field :title, :maxlength => 100 %>
@@ -143,11 +127,11 @@ See the guidelines below." %>
   </div>
 
   <script>
-    $(document).ready(function() {
-      $("#story_fetch_title").click(function() {
-        Lobsters.fetchURLTitle($(this), $("#story_url"), $("#story_title"));
-        return false;
-      });
-    });
+    // $(document).ready(function() {
+    //   $("#story_fetch_title").click(function() {
+    //     Lobsters.fetchURLTitle($(this), $("#story_url"), $("#story_title"));
+    //     return false;
+    //   });
+    // });
   </script>
 <% end %>

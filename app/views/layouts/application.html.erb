@@ -44,13 +44,6 @@
   <div id="wrapper">
     <div id="header">
       <div id="headerleft">
-        <% if @cur_url.present? && !header_links.keys.include?(@cur_url) &&
-        @heading.present? %>
-          <span id="headertitle">
-            <a href="<%= @cur_url %>"><%= @heading %></a>
-          </span>
-        <% end %>
-
         <span class="headerlinks">
           <% header_links.each do |u,v| %>
             <a href="<%= u %>" class="<%= v[:class].join(" ") %>"><%=

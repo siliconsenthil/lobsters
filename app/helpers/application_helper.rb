@@ -38,7 +38,8 @@ module ApplicationHelper
     return @header_links if @header_links
 
     @header_links = {
-      root_path => { :title =>Rails.application.name },
+      root_path => { :title => Rails.application.name },
+      "/top/1m" => { :title => "Most voted" },
       recent_path => { :title => "Recent" },
       comments_path => { :title => "Comments" },
     }
